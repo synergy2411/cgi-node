@@ -30,6 +30,35 @@ yargs.command({
     }
 })
 
+yargs.command({
+    command : "read",
+    description : "to read one note",
+    builder: {
+        title :{
+            type : string,
+            demandOption : true,
+            description : "title to read one note"
+        }
+    },
+    handler : argv => {
+        notes.readNote(argv.title);
+    }
+})
+
+yargs.command({
+    command : "remove",
+    description : "to remove one note",
+    builder : {
+        title :{
+            type : string,
+            demandOption : true,
+            description : "title to remove one note"
+        }
+    },
+    handler : argv => {
+        notes.removeNote(argv.title);
+    }
+})
 
 yargs.parse();
 
