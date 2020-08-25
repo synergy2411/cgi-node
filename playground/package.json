@@ -1,0 +1,16 @@
+{
+  "name": "playground-00",
+  "version": "1.0.0",
+  "description": "This is playground",
+  "main": "index.js",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "yargs": "^15.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sumit Khandelwal",
+  "license": "ISC"
+}
+
