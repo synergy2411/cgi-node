@@ -1,5 +1,6 @@
 const express = require("express");
 const geo = require("./utils/geocode");
+const forecast = require("./utils/forecast");
 
 const app = express();
 
@@ -14,9 +15,13 @@ app.get("/weather", (req, res) => {
             if(err){
                 return res.send("Some Problem.", err)
             }
-            console.log(lat,lng)
+            forecast.getForecast(lat, lng, (err, {temperature, summary}) => {
+                if(err){
+                    return res.send(err);
+                }
+                return res.send({temperature, summary, address});
+            })
         });
-        return res.send("API Hit");
     }
 })
 
