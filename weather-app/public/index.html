@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Weather App</title>
+    <!-- jQuery Library -->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 offset-sm-2">
+          <div class="card">
+            <div class="card card-body">
+              <p class="text-center display-4">Weather App</p>
+              <form>
+                <div class="row">
+                  <div class="col-sm-7 col-md-7">
+                    <input
+                      type="text"
+                      name="address"
+                      id="address"
+                      placeholder="Enter your location"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="col-sm-4 col-md-4">
+                    <button
+                      class="btn btn-outline-primary btn-block"
+                      type="button"
+                      id="btnPredict"
+                    >
+                      Predict
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        $(document).ready(() => {
+            $("#btnPredict").on("click", event=>{
+                event.preventDefault();
+                const address = $("#address").val();
+               
+                fetch("http://localhost:9000/weather?address="+address)
+                    .then(response => console.log(response))
+                    .catch(err => console.log(err));
+
+                // $.ajax("http://localhost:9000/weather?address="+address, {
+                //     success : response => {
+                //         console.log("Server response : ", response);
+                //     },
+                //     error : err => {
+                //         console.log(err);
+                //     }
+                // })
+            })
+        })
+    </script>
+
+  </body>
+</html>
