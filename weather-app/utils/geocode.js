@@ -1,8 +1,9 @@
 const axios = require("axios").default;
+const environment = require("../environment/environment");
 
 const getGeocode = (address, cb) => {
   // const url = "https://api.mapbox.com/geocoding/v5/mapbox.places/"+address+"".json?access_token=pk.eyJ1Ijoic3luZXJneTI0MTEiLCJhIjoiY2p4NXc0cm53MDZoODQwbHFuNzdzMzV5NCJ9.DKIDo6bcG51yLXf2DmlYcQ"
-  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=pk.eyJ1Ijoic3luZXJneTI0MTEiLCJhIjoiY2p4NXc0cm53MDZoODQwbHFuNzdzMzV5NCJ9.DKIDo6bcG51yLXf2DmlYcQ`;
+  const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${environment.mapBoxAPI}`;
 
   axios
     .get(url)

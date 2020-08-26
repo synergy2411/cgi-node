@@ -1,8 +1,9 @@
 const axios = require("axios").default;
+const environment = require("../environment/environment");
 
 const getForecast = (lat,lng, cb) => {
 
-    const url = `https://api.darksky.net/forecast/473fe696d21e65026547b2d50b56014c/${lat},${lng}`;
+    const url = `https://api.darksky.net/forecast/${environment.darkskyAPI}/${lat},${lng}`;
 
     axios.get(url)
         .then(response => {
