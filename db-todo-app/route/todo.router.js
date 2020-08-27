@@ -11,7 +11,16 @@ router.route("/")
         })
         
     })
-    .post((req, res)=>{})
+    .post((req, res)=>{
+        if(req.body){
+            const todo = new Todo({...req.body});
+            todo.save().then(response => {
+                return res.send(response).status(201);
+            }).catch(err => {
+                return res.send(err).status(501);
+            })
+        }
+    })
 
 router.route("/:id")
     .get((req, res) => {})
