@@ -5,6 +5,7 @@ const server = http.createServer(app);
 const io = require("socket.io")(server);
 require("./db/mongoose");
 const Chat = require("./model/chatter.model");
+const PORT = process.env.PORT || 9090;
 
 let _messageStack = [];
 let _chatterName = null;
@@ -19,7 +20,7 @@ app.get("/", (req, res) => {
 io.on("connection", (client) => {
   client.on("toServer", (data) => {
     const { message, chatterName } = data;
-    console.log(chatterName + " : " + message);
+    // console.log(chatterName + " : " + message);
     _messageStack.push(message);
     _chatterName = chatterName;
     client.emit("toClient", { message, chatterName: "Me" });
@@ -27,19 +28,19 @@ io.on("connection", (client) => {
   });
   client.on("disconnect", () => {
     // whenever client gets disconnected
-    console.log("Client disconnected", _messageStack, _chatterName);
-    const chat = new Chat({
-      chatterName: _chatterName,
-      messages: _messageStack,
-    });
+    // console.log("Client disconnected", _messageStack, _chatterName);
+    // const chat = new Chat({
+    //   chatterName: _chatterName,
+    //   messages: _messageStack,
+    // });
 
-    chat.save().then(response => {
-        console.log(response);
-    }).catch(err => console.log(err));
-    
+    // chat.save().then(response => {
+    //     console.log(response);
+    // }).catch(err => console.log(err));
+
   });
 });
 
-server.listen(9090, () => {
-  console.log("Socket Server started at Port 9090");
+server.listen(PORT, () => {
+  console.log("Socket Server started at Port " + PORT);
 });

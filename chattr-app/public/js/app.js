@@ -1,5 +1,5 @@
 $(document).ready(()=>{
-    const socket = io.connect("http://localhost:9090");
+    const socket = io.connect("/");
     const chatterName = prompt("Pls enter your name");
 
     $("#btnSend").on("click", event => {
