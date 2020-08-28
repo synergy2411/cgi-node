@@ -13,6 +13,12 @@ app.get("/", (req, res) => {
 
 io.on("connection", client => {
     console.log("Connection established");
+    client.on("toServer", data => {
+        console.log("Message : ", data.message);
+        client.emit("toClient", data);
+        
+        client.broadcast.emit("toClient", data);
+    })
 })
 
 server.listen(9090, () => {
