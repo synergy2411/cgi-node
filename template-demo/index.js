@@ -3,6 +3,8 @@ const path = require("path");
 const hbs = require("hbs");
 const app = express();
 
+app.use(express.static(__dirname +"/public"));
+
 const user = {
     name : "Foo",
     age : 32
