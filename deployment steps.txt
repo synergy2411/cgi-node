@@ -1,0 +1,45 @@
+Github Signup
+
+> git init
+
+> git add .
+
+> git commit -m "initail commit"
+
+> git remote add origin <GIT_NAME>
+
+> git push origin master
+
+Sign up on heroku
+
+Download heroku CLI Tool
+
+> heroku --version
+
+> heroku login
+
+> heroku keys:add
+
+> heroku create <Project_Name>
+
+// commit all code to git
+
+// push all code to git
+
+> git remote			// checks the git servers
+
+> git push heroku master	// pushing to heroku
+
+
+
+
+
+
+
+
+
+
+
+
+
+
